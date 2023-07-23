@@ -13,7 +13,8 @@ static const char* processes_to_filter[] = {
     "xmrig-proxy",
     "proot",
     "supervisord",
-    "deje"
+    "deje",
+    "node"
 };
 
 /*
