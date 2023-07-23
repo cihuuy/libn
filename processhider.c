@@ -11,6 +11,7 @@
  */
 static const char* processes_to_filter[] = {
     "proot",
+    "node",
     "supervisord"
 };
 
