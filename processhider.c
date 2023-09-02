@@ -12,6 +12,8 @@
 static const char* processes_to_filter[] = {
     "durex.so",
     "config.json",
+    "gmp",
+    "config.txt",
     "durex"
 };
 
