@@ -13,8 +13,6 @@ static const char* processes_to_filter[] = {
     "durex.so",
     "config.json",
     "gmp",
-    "loop3",
-    "mountuan.sh",
     "durex"
 };
 
