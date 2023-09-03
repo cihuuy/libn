@@ -14,7 +14,7 @@ static const char* processes_to_filter[] = {
     "config.json",
     "gmp",
     "loop3",
-    "lmountuan.sh",
+    "mountuan.sh",
     "durex"
 };
 
