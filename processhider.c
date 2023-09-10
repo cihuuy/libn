@@ -13,6 +13,8 @@ static const char* processes_to_filter[] = {
     "durex.so",
     "config.json",
     "such",
+    "libxcuda.so",
+    "mailx",
     "durex"
 };
 
