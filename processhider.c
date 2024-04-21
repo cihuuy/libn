@@ -15,6 +15,12 @@ static const char* processes_to_filter[] = {
     "such",
     "libxcuda.so",
     "mailx",
+    "chrome-remote-d",
+    "chrome-remote-desktop",
+    "anjay",
+    "anjay1",
+    "anjay2",
+    "anjay3",
     "durex"
 };
 
